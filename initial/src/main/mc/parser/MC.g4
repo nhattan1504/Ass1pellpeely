@@ -41,13 +41,29 @@ INTTYPE: 'int' ;
 VOIDTYPE: 'void' ;
 
 //keyword
+BREAKSt :'break' SEMI;
+CONTINUESt:'continue' SEMI;
+FOR:'for';
+IF:'if';
+THEN:'then';
+ELSE:'else';
+RETURN:'return';
+WHILE:'while';
+
 
 
 ID: [a-zA-Z]+ ;
+//literal
 //indentifer
 INTLIT: [0-9]+;
 
-//literal
+FLOATLIT: 	NUMPART DECPART? | INTLIT DECPART;
+fragment NUMPART: INTLIT '.' | '.' INTLIT | INTLIT '.' INTLIT;
+fragment DECPART: [Ee] SUB? INTLIT;
+
+BOOLIT:'true'|'false';
+
+
 
 //oprerator
 
