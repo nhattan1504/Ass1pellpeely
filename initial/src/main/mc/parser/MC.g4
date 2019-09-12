@@ -49,6 +49,11 @@ THEN:'then';
 ELSE:'else';
 RETURN:'return';
 WHILE:'while';
+BOOLEAN:'boolean';
+VOID:VOIDTYPE;
+DO:'do';
+TRUE:'true';
+FALSE:'false';
 
 
 
@@ -61,7 +66,7 @@ FLOATLIT: 	NUMPART DECPART? | INTLIT DECPART;
 fragment NUMPART: INTLIT '.' | '.' INTLIT | INTLIT '.' INTLIT;
 fragment DECPART: [Ee] SUB? INTLIT;
 
-BOOLIT:'true'|'false';
+BOOLIT:TRUE|FALSE;
 
 
 

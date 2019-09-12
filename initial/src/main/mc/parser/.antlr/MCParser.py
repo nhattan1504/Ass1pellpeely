@@ -7,19 +7,19 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3,")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\61")
         buf.write("(\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\3\2\3\2")
         buf.write("\3\2\3\2\3\2\5\2\23\n\2\3\2\3\2\3\2\3\3\3\3\3\4\3\4\3")
         buf.write("\4\3\5\3\5\5\5\37\n\5\3\6\3\6\3\6\5\6$\n\6\3\6\3\6\3\6")
         buf.write("\2\2\7\2\4\6\b\n\2\3\3\2\4\5\2%\2\f\3\2\2\2\4\27\3\2\2")
         buf.write("\2\6\31\3\2\2\2\b\36\3\2\2\2\n \3\2\2\2\f\r\5\4\3\2\r")
-        buf.write("\16\7\3\2\2\16\17\7#\2\2\17\20\7$\2\2\20\22\7%\2\2\21")
+        buf.write("\16\7\3\2\2\16\17\7(\2\2\17\20\7)\2\2\20\22\7*\2\2\21")
         buf.write("\23\5\6\4\2\22\21\3\2\2\2\22\23\3\2\2\2\23\24\3\2\2\2")
-        buf.write("\24\25\7&\2\2\25\26\7\2\2\3\26\3\3\2\2\2\27\30\t\2\2\2")
-        buf.write("\30\5\3\2\2\2\31\32\5\n\6\2\32\33\7\'\2\2\33\7\3\2\2\2")
-        buf.write("\34\37\5\n\6\2\35\37\7\17\2\2\36\34\3\2\2\2\36\35\3\2")
-        buf.write("\2\2\37\t\3\2\2\2 !\7\16\2\2!#\7#\2\2\"$\5\b\5\2#\"\3")
-        buf.write("\2\2\2#$\3\2\2\2$%\3\2\2\2%&\7$\2\2&\13\3\2\2\2\5\22\36")
+        buf.write("\24\25\7+\2\2\25\26\7\2\2\3\26\3\3\2\2\2\27\30\t\2\2\2")
+        buf.write("\30\5\3\2\2\2\31\32\5\n\6\2\32\33\7,\2\2\33\7\3\2\2\2")
+        buf.write("\34\37\5\n\6\2\35\37\7\24\2\2\36\34\3\2\2\2\36\35\3\2")
+        buf.write("\2\2\37\t\3\2\2\2 !\7\23\2\2!#\7(\2\2\"$\5\b\5\2#\"\3")
+        buf.write("\2\2\2#$\3\2\2\2$%\3\2\2\2%&\7)\2\2&\13\3\2\2\2\5\22\36")
         buf.write("#")
         return buf.getvalue()
 
@@ -36,7 +36,8 @@ class MCParser ( Parser ):
 
     literalNames = [ "<INVALID>", "'main'", "'int'", "'void'", "<INVALID>", 
                      "<INVALID>", "'for'", "'if'", "'then'", "'else'", "'return'", 
-                     "'while'", "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "'while'", "'boolean'", "<INVALID>", "'do'", "'true'", 
+                     "'false'", "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                      "'+'", "'*'", "'!'", "'||'", "'!='", "'<'", "'<='", 
                      "'='", "'-'", "'/'", "'%'", "'&&'", "'=='", "'>'", 
                      "'>='", "'['", "']'", "'('", "')'", "'{'", "'}'", "';'", 
@@ -44,11 +45,12 @@ class MCParser ( Parser ):
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "INTTYPE", "VOIDTYPE", "BREAKSt", 
                       "CONTINUESt", "FOR", "IF", "THEN", "ELSE", "RETURN", 
-                      "WHILE", "ID", "INTLIT", "FLOATLIT", "BOOLIT", "ADD", 
-                      "MUL", "LOGN", "LOGO", "NOTE", "LT", "LTOE", "ASSIG", 
-                      "SUB", "DIV", "MOD", "LOGA", "EQ", "GT", "GTOE", "LSB", 
-                      "RSB", "LB", "RB", "LP", "RP", "SEMI", "CM", "WS", 
-                      "ERROR_CHAR", "UNCLOSE_STRING", "ILLEGAL_ESCAPE" ]
+                      "WHILE", "BOOLEAN", "VOID", "DO", "TRUE", "FALSE", 
+                      "ID", "INTLIT", "FLOATLIT", "BOOLIT", "ADD", "MUL", 
+                      "LOGN", "LOGO", "NOTE", "LT", "LTOE", "ASSIG", "SUB", 
+                      "DIV", "MOD", "LOGA", "EQ", "GT", "GTOE", "LSB", "RSB", 
+                      "LB", "RB", "LP", "RP", "SEMI", "CM", "WS", "ERROR_CHAR", 
+                      "UNCLOSE_STRING", "ILLEGAL_ESCAPE" ]
 
     RULE_program = 0
     RULE_mctype = 1
@@ -70,37 +72,42 @@ class MCParser ( Parser ):
     ELSE=9
     RETURN=10
     WHILE=11
-    ID=12
-    INTLIT=13
-    FLOATLIT=14
-    BOOLIT=15
-    ADD=16
-    MUL=17
-    LOGN=18
-    LOGO=19
-    NOTE=20
-    LT=21
-    LTOE=22
-    ASSIG=23
-    SUB=24
-    DIV=25
-    MOD=26
-    LOGA=27
-    EQ=28
-    GT=29
-    GTOE=30
-    LSB=31
-    RSB=32
-    LB=33
-    RB=34
-    LP=35
-    RP=36
-    SEMI=37
-    CM=38
-    WS=39
-    ERROR_CHAR=40
-    UNCLOSE_STRING=41
-    ILLEGAL_ESCAPE=42
+    BOOLEAN=12
+    VOID=13
+    DO=14
+    TRUE=15
+    FALSE=16
+    ID=17
+    INTLIT=18
+    FLOATLIT=19
+    BOOLIT=20
+    ADD=21
+    MUL=22
+    LOGN=23
+    LOGO=24
+    NOTE=25
+    LT=26
+    LTOE=27
+    ASSIG=28
+    SUB=29
+    DIV=30
+    MOD=31
+    LOGA=32
+    EQ=33
+    GT=34
+    GTOE=35
+    LSB=36
+    RSB=37
+    LB=38
+    RB=39
+    LP=40
+    RP=41
+    SEMI=42
+    CM=43
+    WS=44
+    ERROR_CHAR=45
+    UNCLOSE_STRING=46
+    ILLEGAL_ESCAPE=47
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
