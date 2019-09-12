@@ -1,1 +1,1 @@
-abc
+boolean abc
