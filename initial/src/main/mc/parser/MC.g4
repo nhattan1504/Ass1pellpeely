@@ -34,7 +34,8 @@ body: funcall SEMI;
 
 exp: funcall | INTLIT ;
 
-funcall: ID LB exp? RB ;//
+funcall: ID LB exp? RB ;
+//
 /*lexer*/ 
 INTTYPE: 'int' ;
 
@@ -56,10 +57,12 @@ TRUE:'true';
 FALSE:'false';
 
 
-
-ID: [a-zA-Z]+ ;
+//identified
+ID: Letter LetterOrDigit*;
+fragment Letter         :       [a-zA-Z_];
+fragment LetterOrDigit  :       [0-9a-zA-Z_];
 //literal
-//indentifer
+
 INTLIT: [0-9]+;
 
 FLOATLIT: 	NUMPART DECPART? | INTLIT DECPART;
