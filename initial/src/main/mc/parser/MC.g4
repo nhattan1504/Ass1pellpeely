@@ -26,31 +26,48 @@ options{
 
 
 
-program  : mctype 'main' LB RB LP body? RP EOF ;//parser
+program  : partdec +EOF;
+partdec: vardec | funcdec ;
 
-mctype: INTTYPE | VOIDTYPE ;
 
-body: funcall SEMI;
 
-exp: funcall | INTLIT ;
 
-funcall: ID LB exp? RB ;
+//Expression
+EXP:;
+EXPINT:;
+EXPBL:;
+EXPSMT:;
+
+//Statements
+SMT:IFSMT|FORSMT|BREAKSt|DOWHILESMT|EXPSMT;
+IFSMT: IF LB EXPBL RB SMT (ELSE SMT)?  ;
+FORSMT: FOR LB EXPINT SEMI EXPBL SEMI EXPINT RB ;
+BREAKSt :'break' SEMI;
+CONTINUESt:'continue' SEMI;
+DOWHILESMT:DO SMT WHILE EXP;
+
+
+
+
+
 //
 /*lexer*/ 
 INTTYPE: 'int' ;
-
+BOOLEAN:'boolean';
 VOIDTYPE: 'void' ;
-
+FLOATTYPE:'float';
+ARRAYTYPE: (INTTYPE|BOOLEAN|FLOATTYPE) ID LSB INTLIT RSB SEMI ;
+ARRAYPTTYPE:Inparr|Outarr;
+Inparr:(INTTYPE|BOOLEAN|FLOATTYPE) ID LSB RSB;
+Outarr:(INTTYPE|BOOLEAN|FLOATTYPE) LSB RSB;
 //keyword
-BREAKSt :'break' SEMI;
-CONTINUESt:'continue' SEMI;
+
 FOR:'for';
 IF:'if';
 THEN:'then';
 ELSE:'else';
 RETURN:'return';
 WHILE:'while';
-BOOLEAN:'boolean';
 VOID:VOIDTYPE;
 DO:'do';
 TRUE:'true';
@@ -108,7 +125,8 @@ CM:',';
 
 //cmt and space 
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
-
+BLOCKCMT:'/*' .*? '*/' ->skip;
+LINECMT:'//' .*? -> skip;
 
 ERROR_CHAR: .;
 UNCLOSE_STRING: .;
