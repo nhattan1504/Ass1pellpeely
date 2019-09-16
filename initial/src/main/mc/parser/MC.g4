@@ -26,37 +26,44 @@ options{
 
 
 
-program  : manydecls +EOF;
+program  : manydecls+ EOF;
 manydecls: decl declTail;
-declTail: decl (declTail)?;
+declTail: (decl declTail)?;
 decl: declVar|declfunc;
 declVar:singleDeclvar|listDeclvar;
-singleDeclvar:PrimiType (ID|ARRAYTYPE) SEMI;
+singleDeclvar:PrimiType (ID|arrayType) SEMI;
 listDeclvar: PrimiType listid SEMI;
-listid: (ID|ARRAYTYPE) idtail;
-idtail: CM (ID|ARRAYTYPE) idtail?;
-declfunc: (PrimiType|ARRAYPTTYPE|VOIDTYPE) ID LB paralist RB blkStmt ;
+listid: (ID|arrayType) idtail;
+idtail: CM (ID|arrayType) idtail?;
+declfunc: (PrimiType|arrayPtType|VOIDTYPE) ID LB paralist RB blkStmt ;
 paralist: para paratail?;
 paratail: CM para paratail?;
-para: (ID|ARRAYTYPE) listid;
+para: (ID|arrayType) listid;
 
 //Expression
-exp:;
-expInt:;
-expBl:;
-expStmt:;
+exp: expUna LSB RSB |expUna ;
+expUna:(SUB|LOGN) expUna|expAssig;
+expAssig: expAssig (DIV|MUL|MOD) expAS| expAS ;
+expAS: expAS (ADD|SUB) expLogic|expLogic ;
+expLogic: expEq (LT|LTOE|GT|GTOE) expEq|expEq ;
+expEq:expAn (EQ|NOTE) expAn|expAn;
+expAn:expAn LOGA expLo | expLo;
+expLo:expLo LOGO expAssg|expAssg;
+expAssg: op ASSIG expAssg | op;
+op: INTLIT|FLOATLIT|STRINGIT|ID|LP exp RP;
+expStmt:expList SEMI;
+expList: exp expList|exp ;
 
 //Statements
 
-ifStmt: IF LB EXPBL RB SMT (ELSE SMT)?  ;
-forStmt: FOR LB EXPINT SEMI EXPBL SEMI EXPINT RB blkStmt ;
+ifStmt: IF LB exp RB stmt (ELSE stmt)?  ;
+forStmt: FOR LB INTTYPE ID exp SEMI exp SEMI exp RB blkStmt ;
 breakStmt :'break' SEMI;
 continueStmt:'continue' SEMI;
-doWhileStmt:DO SMT WHILE EXP;
-
+doWhileStmt:DO  (listStmt|(LB listStmt RB)) SEMI WHILE exp;
+listStmt: stmt listStmt| stmt;
 blkStmt:LSB blkList RSB;
-blkList: blk blkTail;
-blkTail:  blkTail? ;
+blkList: blk blkList|blk;
 blk:declVar|stmt;
 stmt:ifStmt|forStmt|breakStmt|doWhileStmt|expStmt|blkStmt ;
 
@@ -71,10 +78,10 @@ INTTYPE: 'int' ;
 BOOLEAN:'boolean';
 VOIDTYPE: 'void' ;
 FLOATTYPE:'float';
-ARRAYTYPE:  ID LSB INTLIT RSB SEMI ;
-ARRAYPTTYPE:Inparr|Outarr;
-Inparr:(INTTYPE|BOOLEAN|FLOATTYPE) ID LSB RSB;
-Outarr:(INTTYPE|BOOLEAN|FLOATTYPE) LSB RSB;
+arrayType:  ID LSB INTLIT RSB SEMI ;
+arrayPtType:inpArr|outArr;
+inpArr:(INTTYPE|BOOLEAN|FLOATTYPE) ID LSB RSB;
+outArr:(INTTYPE|BOOLEAN|FLOATTYPE) LSB RSB;
 STRING:'A';
 //keyword
 
