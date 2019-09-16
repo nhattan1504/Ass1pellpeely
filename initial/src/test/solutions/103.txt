@@ -1,1 +1,1 @@
-aA,?,sVN,<EOF>
+19 aA,52 ?,19 sVN,<EOF>

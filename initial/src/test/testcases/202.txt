@@ -1,3 +1,1 @@
-int main () {
-            putIntLn(4);
-        }
+int main(){if(a==1)b=1;}

@@ -31,12 +31,12 @@ manydecls: decl declTail;
 declTail: (decl declTail)?;
 decl: declVar|declfunc;
 declVar:singleDeclvar|listDeclvar;
-singleDeclvar:PrimiType (ID|arrayType) SEMI;
-listDeclvar: PrimiType listid SEMI;
+singleDeclvar:primiType (ID SEMI|arrayType) ;
+listDeclvar: primiType listid SEMI;
 listid: (ID|arrayType) idtail;
 idtail: CM (ID|arrayType) idtail?;
-declfunc: (PrimiType|arrayPtType|VOIDTYPE) ID LB paralist RB blkStmt ;
-paralist: para paratail?;
+declfunc: (primiType|arrayPtType|VOIDTYPE) ID LB paralist? RB blkStmt ;
+paralist: para paratail;
 paratail: CM para paratail?;
 para: (ID|arrayType) listid;
 
@@ -50,30 +50,30 @@ expEq:expAn (EQ|NOTE) expAn|expAn;
 expAn:expAn LOGA expLo | expLo;
 expLo:expLo LOGO expAssg|expAssg;
 expAssg: op ASSIG expAssg | op;
-op: INTLIT|FLOATLIT|STRINGIT|ID|LP exp RP;
+op: INTLIT|FLOATLIT|STRINGLIT|ID|LP exp RP;
 expStmt:expList SEMI;
 expList: exp expList|exp ;
 
 //Statements
 
 ifStmt: IF LB exp RB stmt (ELSE stmt)?  ;
-forStmt: FOR LB INTTYPE ID exp SEMI exp SEMI exp RB blkStmt ;
+forStmt: FOR LB INTTYPE ID exp SEMI exp SEMI exp RB blkStmt? ;
 breakStmt :'break' SEMI;
 continueStmt:'continue' SEMI;
 doWhileStmt:DO  (listStmt|(LB listStmt RB)) SEMI WHILE exp;
 listStmt: stmt listStmt| stmt;
-blkStmt:LSB blkList RSB;
+blkStmt:LP blkList? RP;
 blkList: blk blkList|blk;
 blk:declVar|stmt;
 stmt:ifStmt|forStmt|breakStmt|doWhileStmt|expStmt|blkStmt ;
 
-
+//con thieu line stmt
 
 
 
 //
 /*lexer*/ 
-PrimiType:INTTYPE|BOOLEAN|FLOATTYPE|STRING;
+primiType:INTTYPE|BOOLEAN|FLOATTYPE|STRING;
 INTTYPE: 'int' ;
 BOOLEAN:'boolean';
 VOIDTYPE: 'void' ;
@@ -82,7 +82,7 @@ arrayType:  ID LSB INTLIT RSB SEMI ;
 arrayPtType:inpArr|outArr;
 inpArr:(INTTYPE|BOOLEAN|FLOATTYPE) ID LSB RSB;
 outArr:(INTTYPE|BOOLEAN|FLOATTYPE) LSB RSB;
-STRING:'A';
+STRING:'string';
 //keyword
 
 FOR:'for';
@@ -109,6 +109,10 @@ FLOATLIT: 	NUMPART DECPART? | INTLIT DECPART;
 fragment NUMPART: INTLIT '.' | '.' INTLIT | INTLIT '.' INTLIT;
 fragment DECPART: [Ee] SUB? INTLIT;
 
+STRINGLIT:'"' Strings?'"'{self.text=self.text.strip('"')};
+fragment Strings: String+;
+fragment String:~["\r\n\\]|Escape;
+fragment Escape:'\\'[bfrnt"'\\];
 BOOLIT:TRUE|FALSE;
 
 
@@ -151,6 +155,7 @@ WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 BLOCKCMT:'/*' .*? '*/' ->skip;
 LINECMT:'//' .*? -> skip;
 
-ERROR_CHAR: .;
-UNCLOSE_STRING: .;
-ILLEGAL_ESCAPE: .;
+
+UNCLOSE_STRING: '"' Strings?(EOF | [\r\n]) {self.text=self.text.lstrip('"').rstrip("\n\r")}; //ket thuc chuoi "
+ILLEGAL_ESCAPE: '"' Strings?('\\' ~[bfrnt"\\]){self.text=self.text.lstrip('"')};// tra ve token nay vs nhung ki tu k hop le nhu \u 
+ERROR_CHAR: .;// ki tu loi
