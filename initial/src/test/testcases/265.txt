@@ -1,0 +1,5 @@
+
+            int main(){
+        array[foo(2)]==b=a;
+        }
+        

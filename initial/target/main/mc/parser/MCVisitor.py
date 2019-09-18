@@ -14,16 +14,6 @@ class MCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#manydecls.
-    def visitManydecls(self, ctx:MCParser.ManydeclsContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MCParser#declTail.
-    def visitDeclTail(self, ctx:MCParser.DeclTailContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by MCParser#decl.
     def visitDecl(self, ctx:MCParser.DeclContext):
         return self.visitChildren(ctx)
@@ -34,23 +24,13 @@ class MCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#singleDeclvar.
-    def visitSingleDeclvar(self, ctx:MCParser.SingleDeclvarContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MCParser#listDeclvar.
-    def visitListDeclvar(self, ctx:MCParser.ListDeclvarContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by MCParser#listid.
     def visitListid(self, ctx:MCParser.ListidContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#idtail.
-    def visitIdtail(self, ctx:MCParser.IdtailContext):
+    # Visit a parse tree produced by MCParser#var.
+    def visitVar(self, ctx:MCParser.VarContext):
         return self.visitChildren(ctx)
 
 
@@ -64,11 +44,6 @@ class MCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#paratail.
-    def visitParatail(self, ctx:MCParser.ParatailContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by MCParser#para.
     def visitPara(self, ctx:MCParser.ParaContext):
         return self.visitChildren(ctx)
@@ -79,28 +54,8 @@ class MCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#expUna.
-    def visitExpUna(self, ctx:MCParser.ExpUnaContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MCParser#expAssig.
-    def visitExpAssig(self, ctx:MCParser.ExpAssigContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MCParser#expAS.
-    def visitExpAS(self, ctx:MCParser.ExpASContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MCParser#expLogic.
-    def visitExpLogic(self, ctx:MCParser.ExpLogicContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MCParser#expEq.
-    def visitExpEq(self, ctx:MCParser.ExpEqContext):
+    # Visit a parse tree produced by MCParser#expLo.
+    def visitExpLo(self, ctx:MCParser.ExpLoContext):
         return self.visitChildren(ctx)
 
 
@@ -109,13 +64,53 @@ class MCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#expLo.
-    def visitExpLo(self, ctx:MCParser.ExpLoContext):
+    # Visit a parse tree produced by MCParser#expEq.
+    def visitExpEq(self, ctx:MCParser.ExpEqContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#expAssg.
-    def visitExpAssg(self, ctx:MCParser.ExpAssgContext):
+    # Visit a parse tree produced by MCParser#expLogic.
+    def visitExpLogic(self, ctx:MCParser.ExpLogicContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#expAs.
+    def visitExpAs(self, ctx:MCParser.ExpAsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#expDmm.
+    def visitExpDmm(self, ctx:MCParser.ExpDmmContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#expUna.
+    def visitExpUna(self, ctx:MCParser.ExpUnaContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#expV.
+    def visitExpV(self, ctx:MCParser.ExpVContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#expH.
+    def visitExpH(self, ctx:MCParser.ExpHContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#index.
+    def visitIndex(self, ctx:MCParser.IndexContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#invo.
+    def visitInvo(self, ctx:MCParser.InvoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#list_exp.
+    def visitList_exp(self, ctx:MCParser.List_expContext):
         return self.visitChildren(ctx)
 
 
@@ -129,8 +124,8 @@ class MCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#expList.
-    def visitExpList(self, ctx:MCParser.ExpListContext):
+    # Visit a parse tree produced by MCParser#funcall.
+    def visitFuncall(self, ctx:MCParser.FuncallContext):
         return self.visitChildren(ctx)
 
 
@@ -159,23 +154,23 @@ class MCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#listStmt.
-    def visitListStmt(self, ctx:MCParser.ListStmtContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by MCParser#blkStmt.
     def visitBlkStmt(self, ctx:MCParser.BlkStmtContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#blkList.
-    def visitBlkList(self, ctx:MCParser.BlkListContext):
+    # Visit a parse tree produced by MCParser#retNon.
+    def visitRetNon(self, ctx:MCParser.RetNonContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#blk.
-    def visitBlk(self, ctx:MCParser.BlkContext):
+    # Visit a parse tree produced by MCParser#retExp.
+    def visitRetExp(self, ctx:MCParser.RetExpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#retStmt.
+    def visitRetStmt(self, ctx:MCParser.RetStmtContext):
         return self.visitChildren(ctx)
 
 

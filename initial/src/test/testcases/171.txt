@@ -1,0 +1,1 @@
+int a,b; float f; string str; int array[1]

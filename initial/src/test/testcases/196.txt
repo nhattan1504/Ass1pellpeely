@@ -1,0 +1,7 @@
+ 
+            void main(){
+                return;
+            }
+            int a;
+            int b;
+            

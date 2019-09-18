@@ -1,0 +1,1 @@
+void,main,(,),{,string,str,=,Chery Chery Lady\n,int,a,=,10,;,return,;,},<EOF>

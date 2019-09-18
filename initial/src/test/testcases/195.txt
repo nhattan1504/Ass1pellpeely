@@ -1,0 +1,10 @@
+ 
+            int[] foo(){
+                int a[5];
+                return a;
+            }
+            void main(){
+                foo();
+                return;
+            }
+            

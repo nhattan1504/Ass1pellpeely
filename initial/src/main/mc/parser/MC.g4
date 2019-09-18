@@ -4,20 +4,20 @@ grammar MC;
 from lexererr import *
 }
 
-@lexer::member {
+@lexer::members {
 def emit(self):
     tk = self.type
-    if tk == UNCLOSE_STRING:       
-        result = super.emit();
+    if tk == self.UNCLOSE_STRING:       
+        result = super().emit();
         raise UncloseString(result.text);
-    elif tk == ILLEGAL_ESCAPE:
-        result = super.emit();
+    elif tk == self.ILLEGAL_ESCAPE:
+        result = super().emit();
         raise IllegalEscape(result.text);
-    elif tk == ERROR_CHAR:
-        result = super.emit();
+    elif tk == self.ERROR_CHAR:
+        result = super().emit();
         raise ErrorToken(result.text); 
     else:
-        return super.emit();
+        return super().emit();
 }
 
 options{
@@ -26,68 +26,89 @@ options{
 
 
 
-program  : manydecls+ EOF;
-manydecls: decl declTail;
-declTail: (decl declTail)?;
+program  : decl+ EOF;
 decl: declVar|declfunc;
-declVar:singleDeclvar|listDeclvar;
-singleDeclvar:primiType (ID SEMI|arrayType) ;
-listDeclvar: primiType listid SEMI;
-listid: (ID|arrayType) idtail;
-idtail: CM (ID|arrayType) idtail?;
-declfunc: (primiType|arrayPtType|VOIDTYPE) ID LB paralist? RB blkStmt ;
-paralist: para paratail;
-paratail: CM para paratail?;
-para: (ID|arrayType) listid;
+declVar:primiType listid SEMI;
+listid:var (CM var)*;
+var: ID (LSB INTLIT RSB)?;
+
+//decla func
+declfunc: (primiType|outArr|VOIDTYPE) ID LB paralist? RB LP stmt* RP ;
+paralist: para CM paralist|para;
+para: primiType (ID| ID LSB RSB) ;
+
+BOOLIT:TRUE|FALSE;
 
 //Expression
-exp: expUna LSB RSB |expUna ;
-expUna:(SUB|LOGN) expUna|expAssig;
-expAssig: expAssig (DIV|MUL|MOD) expAS| expAS ;
-expAS: expAS (ADD|SUB) expLogic|expLogic ;
-expLogic: expEq (LT|LTOE|GT|GTOE) expEq|expEq ;
-expEq:expAn (EQ|NOTE) expAn|expAn;
-expAn:expAn LOGA expLo | expLo;
-expLo:expLo LOGO expAssg|expAssg;
-expAssg: op ASSIG expAssg | op;
-op: INTLIT|FLOATLIT|STRINGLIT|ID|LP exp RP;
-expStmt:expList SEMI;
-expList: exp expList|exp ;
 
+exp:expLo ASSIG exp|expLo;
+expLo:expLo LOGO expAn|expAn;
+expAn:expAn LOGA expEq|expEq;
+expEq:expLogic (EQ|NOTE) expLogic|expLogic;
+expLogic: expAs (LT|LTOE|GT|GTOE) expAs|expAs;
+expAs:expAs(ADD|SUB) expDmm|expDmm;
+expDmm:expDmm(DIV|MUL|MOD) expUna|expUna;
+expUna:(SUB|LOGN) expV|expV;
+expV: index|expH  ;
+expH: LB exp RB |op;
+index:funcall LSB exp RSB | ID LSB exp RSB;
+invo:ID LB list_exp? RB;
+list_exp:exp (CM exp)*;
+op:INTLIT|FLOATLIT|STRINGLIT|BOOLIT|ID|invo ;
+
+
+
+
+expStmt:exp SEMI;
+
+
+
+funcall:ID LB list_exp RB ;
 //Statements
 
-ifStmt: IF LB exp RB stmt (ELSE stmt)?  ;
-forStmt: FOR LB INTTYPE ID exp SEMI exp SEMI exp RB blkStmt? ;
-breakStmt :'break' SEMI;
-continueStmt:'continue' SEMI;
-doWhileStmt:DO  (listStmt|(LB listStmt RB)) SEMI WHILE exp;
-listStmt: stmt listStmt| stmt;
-blkStmt:LP blkList? RP;
-blkList: blk blkList|blk;
-blk:declVar|stmt;
-stmt:ifStmt|forStmt|breakStmt|doWhileStmt|expStmt|blkStmt ;
+ ifStmt: IF LB exp RB stmt(ELSE stmt)? ;
 
-//con thieu line stmt
+forStmt: FOR LB exp SEMI exp SEMI exp RB stmt ;
+
+breakStmt :BREAK SEMI;
+
+continueStmt:CONTINUE SEMI;
+
+doWhileStmt:DO  stmt+  WHILE exp SEMI;
+
+
+blkStmt:LP stmt* RP;
+
+retNon:RETURN SEMI;
+retExp: RETURN exp SEMI;
+retStmt: retNon|retExp;
+
+
+stmt:ifStmt|forStmt|breakStmt|doWhileStmt|expStmt|blkStmt|retStmt|continueStmt|expStmt |declVar|SEMI  ;
+
+
 
 
 
 //
 /*lexer*/ 
-primiType:INTTYPE|BOOLEAN|FLOATTYPE|STRING;
+primiType:INTTYPE|BOOLEAN|FLOATTYPE|STRINGTYPE;
 INTTYPE: 'int' ;
 BOOLEAN:'boolean';
 VOIDTYPE: 'void' ;
 FLOATTYPE:'float';
-arrayType:  ID LSB INTLIT RSB SEMI ;
+arrayType:  ID LSB exp RSB  ;
 arrayPtType:inpArr|outArr;
 inpArr:(INTTYPE|BOOLEAN|FLOATTYPE) ID LSB RSB;
 outArr:(INTTYPE|BOOLEAN|FLOATTYPE) LSB RSB;
-STRING:'string';
+
+
+
+
 //keyword
 
 FOR:'for';
 IF:'if';
-THEN:'then';
 ELSE:'else';
 RETURN:'return';
 WHILE:'while';
@@ -95,9 +116,15 @@ VOID:VOIDTYPE;
 DO:'do';
 TRUE:'true';
 FALSE:'false';
+STRINGTYPE:'string';
+BREAK:'break';
+CONTINUE:'continue';
+
+
 
 
 //identified
+
 ID: Letter LetterOrDigit*;
 fragment Letter         :       [a-zA-Z_];
 fragment LetterOrDigit  :       [0-9a-zA-Z_];
@@ -109,11 +136,11 @@ FLOATLIT: 	NUMPART DECPART? | INTLIT DECPART;
 fragment NUMPART: INTLIT '.' | '.' INTLIT | INTLIT '.' INTLIT;
 fragment DECPART: [Ee] SUB? INTLIT;
 
-STRINGLIT:'"' Strings?'"'{self.text=self.text.strip('"')};
+STRINGLIT:'"' Strings?'"'{self.text=self.text[1:-1]};
 fragment Strings: String+;
 fragment String:~["\r\n\\]|Escape;
 fragment Escape:'\\'[bfrnt"'\\];
-BOOLIT:TRUE|FALSE;
+
 
 
 
@@ -153,7 +180,7 @@ CM:',';
 //cmt and space 
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 BLOCKCMT:'/*' .*? '*/' ->skip;
-LINECMT:'//' .*? -> skip;
+LINECMT:'//'(~[\r\n])*  -> skip;
 
 
 UNCLOSE_STRING: '"' Strings?(EOF | [\r\n]) {self.text=self.text.lstrip('"').rstrip("\n\r")}; //ket thuc chuoi "
