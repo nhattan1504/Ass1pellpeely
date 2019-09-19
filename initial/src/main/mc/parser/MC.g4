@@ -57,12 +57,7 @@ list_exp:exp (CM exp)*;
 op:INTLIT|FLOATLIT|STRINGLIT|BOOLIT|ID|invo ;
 
 
-
-
 expStmt:exp SEMI;
-
-
-
 funcall:ID LB list_exp RB ;
 //Statements
 
@@ -84,7 +79,7 @@ retExp: RETURN exp SEMI;
 retStmt: retNon|retExp;
 
 
-stmt:ifStmt|forStmt|breakStmt|doWhileStmt|expStmt|blkStmt|retStmt|continueStmt|expStmt |declVar|SEMI  ;
+stmt:ifStmt|forStmt|breakStmt|doWhileStmt|expStmt|blkStmt|retStmt|continueStmt|expStmt |declVar|SEMI   ;
 
 
 
@@ -93,14 +88,15 @@ stmt:ifStmt|forStmt|breakStmt|doWhileStmt|expStmt|blkStmt|retStmt|continueStmt|e
 //
 /*lexer*/ 
 primiType:INTTYPE|BOOLEAN|FLOATTYPE|STRINGTYPE;
+VOID:VOIDTYPE;
 INTTYPE: 'int' ;
 BOOLEAN:'boolean';
 VOIDTYPE: 'void' ;
 FLOATTYPE:'float';
 arrayType:  ID LSB exp RSB  ;
 arrayPtType:inpArr|outArr;
-inpArr:(INTTYPE|BOOLEAN|FLOATTYPE) ID LSB RSB;
-outArr:(INTTYPE|BOOLEAN|FLOATTYPE) LSB RSB;
+inpArr:primiType ID LSB RSB;
+outArr:primiType LSB RSB;
 
 
 
@@ -112,7 +108,6 @@ IF:'if';
 ELSE:'else';
 RETURN:'return';
 WHILE:'while';
-VOID:VOIDTYPE;
 DO:'do';
 TRUE:'true';
 FALSE:'false';

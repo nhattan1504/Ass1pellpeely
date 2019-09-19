@@ -1,1 +1,7 @@
- a123*123 
+int main(){
+            if n>1)
+            {
+                printName();    
+            }
+        }
+        

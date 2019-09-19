@@ -1,1 +1,11 @@
- abc234abc__234abc 
+
+        void main(){
+
+        }
+        string[] reType(){
+
+        }
+        boolean[] ahaha(){
+
+        }
+        

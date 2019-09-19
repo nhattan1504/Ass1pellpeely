@@ -1,1 +1,4 @@
-float f = 1.0;
+int main() {
+            int a,bc
+            }
+        

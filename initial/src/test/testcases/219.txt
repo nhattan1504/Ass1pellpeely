@@ -1,3 +1,12 @@
-int main() {
-            boolean boo[2]={true,false};
+int main(){
+            if (n>1)
+            {
+                printName();    
+            }
+            {
+                printAge();
+            }
+            {
+                printAddress();
+            }
         }

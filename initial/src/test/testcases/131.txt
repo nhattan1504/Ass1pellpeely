@@ -1,1 +1,3 @@
- 123%dsad 
+int main(){
+            var = a[4][];
+        

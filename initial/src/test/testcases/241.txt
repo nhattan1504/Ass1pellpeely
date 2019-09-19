@@ -1,7 +1,4 @@
-
-        int[] foo (int b[]){
-            int a [1];
-            if (b>c) return a;
-            else return b;
+int main(){
+            a==b==c;
         }
         

@@ -1,1 +1,10 @@
-a;b;c;d;e;f;
+
+        int main(){
+            DEFINE = 10.e-16;
+            float f;
+            f = 10.e-1;
+            do{
+                f=f*.e1;
+            }while DEFINE<f;
+        }
+        

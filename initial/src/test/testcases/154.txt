@@ -1,1 +1,5 @@
-//abcdef 
+int main(){
+            do
+            while true;
+            }
+        

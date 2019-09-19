@@ -1,1 +1,6 @@
- abcda 
+
+        int a,b,c[5];
+        string str;
+        boolean boo;
+        float f;
+        

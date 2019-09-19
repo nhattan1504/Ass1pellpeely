@@ -1,6 +1,5 @@
-
-        void foo ( ) {
-            if(a<b) return ; 
-            else return 2; 
-        }       
+int main(){
+            boolean check;
+            check=true;
+        }
         

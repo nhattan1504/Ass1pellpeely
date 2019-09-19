@@ -1,1 +1,2 @@
- duk-||%
+int long = "xau";
+        

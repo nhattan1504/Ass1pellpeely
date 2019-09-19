@@ -1,1 +1,1 @@
-123,%,dsad,<EOF>
+Error on line 2 col 22: [

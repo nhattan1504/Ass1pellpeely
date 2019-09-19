@@ -1,1 +1,9 @@
-(a,b,c)
+int global[100];
+        void main(){
+            //0 = a*x+b;
+            a = 0;
+            b = 0;
+            printf("Solution of a*x+b = 0 \\%d",-b/a);
+            return;
+        }
+        

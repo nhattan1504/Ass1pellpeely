@@ -1,1 +1,1 @@
-a,==,a,+,b,<EOF>
+Error on line 2 col 23: ]

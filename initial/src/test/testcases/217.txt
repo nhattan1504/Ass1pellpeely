@@ -1,5 +1,3 @@
 
-            void foo (){
-                int a[m];
-            }
+        void foo(int x);
         

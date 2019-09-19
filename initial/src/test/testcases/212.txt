@@ -1,5 +1,13 @@
 
-            void foo ( int i ){
-                int boolean a;
+        int main(){
+            {
+                //comment
             }
+            {
+                funcall1(a,b);
+            }
+            {
+                str = "string";
+            }
+        }
         

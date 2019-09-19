@@ -1,1 +1,1 @@
-a123,*,123,<EOF>
+Error on line 2 col 15: n

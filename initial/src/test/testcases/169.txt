@@ -1,1 +1,8 @@
-a(x){b}[c];
+
+        int main(){
+            string abc;
+            abc = "true
+";
+            a + b < c == d;
+        }
+        

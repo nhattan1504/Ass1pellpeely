@@ -1,1 +1,6 @@
-/* /*aaaaaaaaabcdef */
+boolean[] main(){
+            do
+            while
+            "Long dep trai vo dich the gioi\";
+        }
+        

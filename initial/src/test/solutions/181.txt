@@ -1,1 +1,1 @@
-1,+,string,<EOF>
+abc\\nabc,<EOF>

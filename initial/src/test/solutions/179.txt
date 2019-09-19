@@ -1,1 +1,1 @@
-string\nstring,<EOF>
+successful

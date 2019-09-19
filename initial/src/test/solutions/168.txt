@@ -1,1 +1,1 @@
-{,a,[,b,(,c,),],;,},<EOF>
+Error on line 5 col 44: ;

@@ -1,1 +1,4 @@
- 1.25678 
+int main(){
+            str = "HAHAHAHADEDKA"
+            }
+        

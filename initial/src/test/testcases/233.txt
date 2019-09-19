@@ -1,5 +1,9 @@
-
-        int main() {
-            a = b || c && d;
+void main(){
+            int i;
+            i=10;
+            print(i);
+            system("pause");
+            return;
+            
+             
         }
-        

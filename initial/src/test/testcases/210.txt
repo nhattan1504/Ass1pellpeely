@@ -1,5 +1,8 @@
 
-        void foo ( int i ){
-            int child_of_foo ( float f ) {} 
+        void main(){
+            do{
+                string str;
+                str = "true";
+            }while(true);
         }
         

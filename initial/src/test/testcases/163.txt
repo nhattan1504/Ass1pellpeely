@@ -1,1 +1,10 @@
-"/* this is string */"
+int main(){
+                GCD(6,9);
+            }
+            void GCD(int a, int b){
+                if (a == 0) return a;
+                else {
+                    GCD(a,b-a);
+                }
+            }
+        

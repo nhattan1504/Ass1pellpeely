@@ -1,1 +1,2 @@
- [ba[b]a[ba][a]b[ab][a] 
+void main( ){ if (a) if (b) if (c) a; else a; else }
+        

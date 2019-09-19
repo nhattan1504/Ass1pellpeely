@@ -1,1 +1,7 @@
-int a; float b; void main(a,b,c,d);
+
+        int main(){
+            string abc;
+            a + b < c = d;
+            a == b == c;
+        }
+        

@@ -1,1 +1,6 @@
- nguyen nh@t tan 
+
+        void main(){
+            a + d;
+            /*Long dep trai nhat qua dat
+        }
+        

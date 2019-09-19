@@ -1,1 +1,10 @@
-"Hello\nWorld"
+
+        int main(){
+            putLn(4);
+            int i;
+            i=0;
+            while(i<=100){
+                i=i*i;
+            }
+        }
+        

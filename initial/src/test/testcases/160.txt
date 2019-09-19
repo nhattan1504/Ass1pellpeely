@@ -1,1 +1,3 @@
- .adsabh. 
+
+        int main(){string s; s="sting;}
+        

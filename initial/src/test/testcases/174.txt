@@ -1,1 +1,7 @@
-int[] functionInt(float f[]);
+
+        int main(){
+            do
+            ;
+            while true;
+        }
+        

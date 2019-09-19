@@ -1,5 +1,11 @@
+int main(){
+            do{
+                int a;
+                a=10;
+                
+            }
+            {
 
-        int main() {
-            a[];
+            }while(n>10)
+          
         }
-        

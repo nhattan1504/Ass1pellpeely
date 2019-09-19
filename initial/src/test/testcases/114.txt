@@ -1,1 +1,7 @@
- while whILe WhiLE wHILe 
+
+        void main(){
+            if ("what")
+                "no";
+            else "ok";
+        }
+        

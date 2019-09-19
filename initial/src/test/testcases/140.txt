@@ -1,1 +1,4 @@
- 1.e -01.e-1 -1e-3.0 
+int main(){
+            inta,b,c,d,e;
+            }
+        

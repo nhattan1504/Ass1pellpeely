@@ -1,1 +1,4 @@
-//abcdef  /* asadasdas */
+int main(){
+            return foo(a[10]);	
+            }
+        

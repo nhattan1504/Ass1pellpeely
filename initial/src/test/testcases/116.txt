@@ -1,1 +1,7 @@
-  else for float if boolean break continue int return void do while true false string 
+
+        void main(){
+            // HAAAHAHAHAHA
+            //DEODKAODKWAOEAW
+            1 + //deadea
+        }
+        

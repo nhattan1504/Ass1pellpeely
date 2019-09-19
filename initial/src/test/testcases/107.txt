@@ -1,1 +1,7 @@
- aA?sVN 
+
+        void main(){
+            do{
+                everything = here;
+            }while(true);
+        }
+        

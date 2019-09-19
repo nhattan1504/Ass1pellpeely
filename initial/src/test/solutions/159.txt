@@ -1,1 +1,1 @@
-[,ba,[,b,],a,[,ba,],[,a,],b,[,ab,],[,a,],<EOF>
+Error on line 1 col 51: }

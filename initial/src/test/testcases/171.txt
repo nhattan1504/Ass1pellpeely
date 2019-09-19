@@ -1,1 +1,8 @@
-int a,b; float f; string str; int array[1]
+
+        int main(){
+            string abc;
+           // a + b < c = d;
+            //a == b == c;
+            a<=b<=c<=d
+        }
+        

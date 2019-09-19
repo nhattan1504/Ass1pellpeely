@@ -1,1 +1,1 @@
-a,&&,b,<,c,<EOF>
+Error on line 2 col 14: ]

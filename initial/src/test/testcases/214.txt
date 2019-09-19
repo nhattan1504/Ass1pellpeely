@@ -1,5 +1,8 @@
 
-            void foo (int b){
-                int a[-8];
+        int main(){
+            {
+               
             }
+            return &;
+        }
         

@@ -1,1 +1,6 @@
- nh@t t@ nguyen#a 
+
+        void main(){
+            for (i =0;i<10051999;i=i+1)
+                haha;
+        }
+        

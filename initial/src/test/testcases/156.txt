@@ -1,1 +1,4 @@
-//abcdef //////*****/ 123456
+int main(){
+            return foo();
+            }
+        
