@@ -1,6 +1,15 @@
 
-        int main(){
-         foo(2)(5);
-
+        int main()
+        {
+            if(a<=1 && b>=2)
+            {
+                continue;
+            }
+            else
+            {
+                do{
+                }
+                while a==true;
+            }
         }
         

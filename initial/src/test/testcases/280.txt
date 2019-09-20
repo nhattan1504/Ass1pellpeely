@@ -1,0 +1,8 @@
+string add(string a,string b){
+            return a+b;
+        }
+            void main(){
+                a="thu";
+                b="xem";
+                print(add(a,b));
+            }

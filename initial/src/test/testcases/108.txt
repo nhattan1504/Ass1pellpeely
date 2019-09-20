@@ -1,6 +1,1 @@
-
-        void main(){
-            for (i =0;i<10051999;i=i+1)
-                haha;
-        }
-        
+ nh@t t@ nguyen#a 

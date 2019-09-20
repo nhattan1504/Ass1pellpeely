@@ -1,4 +1,1 @@
-int main(){
-            return foo();
-            }
-        
+//abcdef //////*****/ 123456

@@ -1,6 +1,1 @@
-
-        void main(){
-            for (bool = true; bool + 10; bool = false)
-            {{{{{{}}}}}}
-        }
-        
+ 13 0 100 69 893218 999999 abc123 

@@ -1,6 +1,1 @@
-
-        boolean[] main(){
-            int x;
-            call();
-        }
-        
+ aCBbdccdc 

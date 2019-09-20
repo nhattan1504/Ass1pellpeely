@@ -1,0 +1,7 @@
+int[] check(int b[]) {
+        int a[1];
+        boolean c;
+        c=true;
+        if (!c) return a;
+        else return b ;
+        }

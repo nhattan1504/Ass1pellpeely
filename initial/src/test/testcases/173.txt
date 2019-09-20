@@ -1,5 +1,1 @@
-
-            int main(){
-                array[foo(2)]==b=a;
-        }
-        
+ "123a 

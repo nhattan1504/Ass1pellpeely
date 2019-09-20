@@ -15,7 +15,6 @@ class LexerSuite(unittest.TestCase):
     def test_identifier_4(self):
         """test identifiers"""
         self.assertTrue(TestLexer.checkLexeme(" abc_123 123_abc/* abc */ ","abc_123,123,_abc,<EOF>",104))
-
     def test_identifier_5(self):
         self.assertTrue(TestLexer.checkLexeme(" aCBbdccdc ","aCBbdccdc,<EOF>",105))
     def test_identifier_6(self):
@@ -111,6 +110,10 @@ class LexerSuite(unittest.TestCase):
     def test_operators_10(self):
         """test operators"""
         self.assertTrue(TestLexer.checkLexeme(" x=a+b-c%!de","x,=,a,+,b,-,c,%,!,de,<EOF>",136))
+    def test_operators_11(self):
+        """test operators"""
+        self.assertTrue(TestLexer.checkLexeme(" /*1+2-ad","/,*,1,+,2,-,ad,<EOF>",137))
+
 
 
     def test_floatl_1(self):
@@ -189,7 +192,6 @@ class LexerSuite(unittest.TestCase):
     def test_separators_3(self):
         """test separators"""
         self.assertTrue(TestLexer.checkLexeme("[dsadsadsa,;()]" ,"[,dsadsadsa,,,;,(,),],<EOF>",161))
-    
     def test_separators_4(self):
         """test separators"""
         self.assertTrue(TestLexer.checkLexeme(";;{{(([]))}} ",";,;,{,{,(,(,[,],),),},},<EOF>",162))
@@ -251,66 +253,65 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.checkLexeme(""" abc "\\abc" abc ""","""abc,Illegal Escape In String: \\a""",179))
     def test_illegal_escape_3(self):
         """test illegal escape"""
-        self.assertTrue(TestLexer.checkLexeme(""" "\\\\ads" ""","""Illegal Escape In String:\\\\a""",180))
+        self.assertTrue(TestLexer.checkLexeme(""" "\\a" ""","""Illegal Escape In String: \\a""",180))
     def test_illegal_escape_4(self):
         """test illegal escape"""
-        self.assertTrue(TestLexer.checkLexeme(""" "abc\\\\nabc" ""","""Illegal Escape In String: abc\\\\n""",181))
-    # def test_illegal_escape_5(self):
-    #     """test illegal escape"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" abc\\n"abc 123" ""","""abc,Error Token \\""",182))
+        self.assertTrue(TestLexer.checkLexeme(""" "abc\\sgv" ""","""Illegal Escape In String: abc\\s""",181))
+    def test_illegal_escape_5(self):
+        """test illegal escape"""
+        self.assertTrue(TestLexer.checkLexeme(""" "nguy\\en" ""","""Illegal Escape In String: nguy\\e""",182))
 
-    # def test_all_lexer_1(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" int main () {}""","""int,main,(,),{,},<EOF>""",183))
-    # def test_all_lexer_2(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" int a[10]; ""","""int,a,[,10,],;,<EOF>""",184))
-    # def test_all_lexer_3(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" int[] foo(int a, int b) {} ""","""int,[,],foo,(,int,a,,,int,b,),{,},<EOF>""",185))
-    # def test_all_lexer_4(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" foo(2)[3+x]=20 ""","""foo,(,2,),[,3,+,x,],=,20,<EOF>""",186))
-    # def test_all_lexer_5(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" /* this is a comment */ void foo() {if (a==0) {b = a+c}} """
-    #     ,"""void,foo,(,),{,if,(,a,==,0,),{,b,=,a,+,c,},},<EOF>""",187))
-    # def test_all_lexer_6(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" int i,j,k,a=5; ""","""int,i,,,j,,,k,,,a,=,5,;,<EOF>""",188))
-    # def test_all_lexer_7(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" (5 || 8)[2] ""","""(,5,||,8,),[,2,],<EOF>""",189))
-    # def test_all_lexer_8(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" abc + 1.e-8 = c ""","""abc,+,1.e-8,=,c,<EOF>""",190))
-    # def test_all_lexer_9(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" string a; a = "nguyen trung tinh" ""","""string,a,;,a,=,nguyen trung tinh,<EOF>""",191))
-    # def test_all_lexer_10(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" boolean b; b = true; ""","""boolean,b,;,b,=,true,;,<EOF>""",192))
-    # def test_all_lexer_11(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" do {s = "nguyen trung tinh";} while (a < b); ""","""do,{,s,=,nguyen trung tinh,;,},while,(,a,<,b,),;,<EOF>""",193))
-    # def test_all_lexer_12(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" int main( {} ""","""int,main,(,{,},<EOF>""",194))
-    # def test_all_lexer_13(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" a + b < c <= d || e && f ""","""a,+,b,<,c,<=,d,||,e,&&,f,<EOF>""",195))
-    # def test_all_lexer_14(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" 125/*58 ""","""125,/,*,58,<EOF>""",196))
-    # def test_all_lexer_15(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" {abc(abc(*abc*)} ""","""{,abc,(,abc,(,*,abc,*,),},<EOF>""",197))
-    # def test_all_lexer_16(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" /* !@#$%^& */ ""","""<EOF>""",198))
-    # def test_all_lexer_17(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" 1.e5987^12 ""","""1.e5987,Error Token ^""",199))
-    # def test_all_lexer_18(self):
-    #     """test all_lexer"""
-    #     self.assertTrue(TestLexer.checkLexeme(""" int a[[5]] ""","""int,a,[,[,5,],],<EOF>""",200))
+    def test_all_lexer_1(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme(' int main () {}',"int,main,(,),{,},<EOF>",183))
+    def test_all_lexer_2(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('void main () {} string[] reType(){}boolean[] ahaha(){}',"void,main,(,),{,},string,[,],reType,(,),{,},boolean,[,],ahaha,(,),{,},<EOF>",184))
+    def test_all_lexer_3(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('int a,b,c[5];',"int,a,,,b,,,c,[,5,],;,<EOF>",185))
+    def test_all_lexer_4(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('void main(){a + d;/*day la cmt*/}',"void,main,(,),{,a,+,d,;,},<EOF>",186))
+    def test_all_lexer_5(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('void main(){@lexer::members{}}',"void,main,(,),{,Error Token @",187))
+    def test_all_lexer_6(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme(""" int a+b-c; ""","int,a,+,b,-,c,;,<EOF>",188))
+    def test_all_lexer_7(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('"int a+c',"Unclosed String: int a+c",189))
+    def test_all_lexer_8(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme(""" abc + 1.e-8 = c ""","""abc,+,1.e-8,=,c,<EOF>""",190))
+    def test_all_lexer_9(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('void main(){break return a=b;}',"void,main,(,),{,break,return,a,=,b,;,},<EOF>",191))
+    def test_all_lexer_10(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme(' string="/*comment*/"; return true; ',"""string,=,/*comment*/,;,return,true,;,<EOF>""",192))
+    def test_all_lexer_11(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme(""" do {str="ppl";} while (a < b); ""","""do,{,str,=,ppl,;,},while,(,a,<,b,),;,<EOF>""",193))
+    def test_all_lexer_12(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('-------1',"-,-,-,-,-,-,-,1,<EOF>",194))
+    def test_all_lexer_13(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('int main(){arr[foo()]==b=a;}',"int,main,(,),{,arr,[,foo,(,),],==,b,=,a,;,},<EOF>",195))
+    def test_all_lexer_14(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('void main(){test();}',"void,main,(,),{,test,(,),;,},<EOF>",196))
+    def test_all_lexer_15(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('void main(){for (bool = true; bool + 10;bool=false){{{{{{}}}}}}}',"void,main,(,),{,for,(,bool,=,true,;,bool,+,10,;,bool,=,false,),{,{,{,{,{,{,},},},},},},},<EOF>""",197))
+    def test_all_lexer_16(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme('',"<EOF>",198))
+    def test_all_lexer_17(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme(' 1.e-^12 ',"1.,e,-,Error Token ^",199))
+    def test_all_lexer_18(self):
+        """test all_lexer"""
+        self.assertTrue(TestLexer.checkLexeme(' int main()/*{        }*/ ',"int,main,(,),<EOF>",200))

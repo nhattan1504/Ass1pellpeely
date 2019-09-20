@@ -1,8 +1,1 @@
-
-        int main(){
-            string abc;
-            abc = "true
-";
-            a + b < c == d;
-        }
-        
+ "\\abc\\rabc" 

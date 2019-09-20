@@ -1,7 +1,1 @@
-
-        void main(){
-            do
-            {{{{{{{;"LONG DEP TRAI";}}}}}}}
-            while "HHAHA" < 10;
-        }
-        
+ intEgeR Float StrIng BoOleaN 

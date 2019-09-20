@@ -1,1 +1,1 @@
-successful
+while,whILe,WhiLE,wHILe,<EOF>

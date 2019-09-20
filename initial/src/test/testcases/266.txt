@@ -1,5 +1,6 @@
 
-            void main(){
-            x = a[def+1][5];
+        int main()
+        {
+            /* love you 3000 */
         }
         

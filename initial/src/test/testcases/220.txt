@@ -1,11 +1,6 @@
-int main(){
-            if (n)
-            {
-                printName();    
-            }
-            else
-            {
 
-            }
-          
+        void main()
+        {
+            break return a=b;
         }
+        

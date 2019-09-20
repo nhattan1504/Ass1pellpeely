@@ -1,0 +1,7 @@
+void main(){
+            float x;
+            x=1.2e3;
+            (a+b)[12];
+            
+        }
+        

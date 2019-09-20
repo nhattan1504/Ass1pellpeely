@@ -1,7 +1,1 @@
-
-        void main(){
-            do{
-                everything = here;
-            }while(true);
-        }
-        
+ aA?sVN 

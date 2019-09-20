@@ -1,1 +1,1 @@
-successful
+x,=,a,+,b,-,c,%,!,de,<EOF>

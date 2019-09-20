@@ -1,12 +1,5 @@
-int main(){
-            for (i=0;i<10;i=i+1)
-            {
-                print("This is PPL");
-            }
-            {
 
-            } 
-            {
-
-            }  
-        }
+        void main(){
+            strn= strings*10/checked(4)[a[1]];
+           }
+        

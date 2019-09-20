@@ -1,1 +1,1 @@
-void,main,(,),{,int,foo,(,),{,return,1,;,},int,a,;,a,=,foo,(,),;,return,;,},<EOF>
+<EOF>

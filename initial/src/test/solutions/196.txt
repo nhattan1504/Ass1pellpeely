@@ -1,1 +1,1 @@
-void,main,(,),{,return,;,},int,a,;,int,b,;,<EOF>
+void,main,(,),{,test,(,),;,},<EOF>

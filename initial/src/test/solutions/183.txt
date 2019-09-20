@@ -1,1 +1,1 @@
-123e-10-1234.E10,Error Token \
+int,main,(,),{,},<EOF>

@@ -1,4 +1,1 @@
-int main(){
-            str = "HAHAHAHA\";
-            }
-        
+ 12.e12-3 

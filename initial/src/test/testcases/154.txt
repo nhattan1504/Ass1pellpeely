@@ -1,5 +1,1 @@
-int main(){
-            do
-            while true;
-            }
-        
+//abcdef 

@@ -1,1 +1,1 @@
-int,a,;,float,b,;,string,c,;,int,d,[,10,],void,main,(,),{,{,},return,;,},<EOF>
+do,{,str,=,ppl,;,},while,(,a,<,b,),;,<EOF>

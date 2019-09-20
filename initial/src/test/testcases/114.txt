@@ -1,7 +1,1 @@
-
-        void main(){
-            if ("what")
-                "no";
-            else "ok";
-        }
-        
+ while whILe WhiLE wHILe 

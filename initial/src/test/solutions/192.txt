@@ -1,1 +1,1 @@
-int,foo,(,int,a,[,],),{,return,a,[,0,],;,},;,void,main,(,),{,int,arr,[,10,],;,float,f,;,f,=,0,;,do,f,=,f,+,foo,(,arr,),;,f,=,f,+,1,;,while,foo,(,arr,),+,f,<,100,;,return,;,},<EOF>
+string,=,/*comment*/,;,return,true,;,<EOF>

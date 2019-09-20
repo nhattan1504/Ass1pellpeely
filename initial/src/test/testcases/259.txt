@@ -1,7 +1,10 @@
 
-        //Dang Van Dung
-        int main(){
-        //Dang Van Dung
-            int a;
-    }
+        int main()
+        {
+            int a,b;
+            a=100;
+            b=200;
+            c=2*(a+b);
+            s=a*b;
+        }
         

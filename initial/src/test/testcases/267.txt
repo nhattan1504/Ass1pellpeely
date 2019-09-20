@@ -1,11 +1,6 @@
 
-           int computeSum(int a[],int n){
-                int sum;
-                sum=0;
-                for (i=0;i<n;i=i+1){
-                    sum=sum+a[i];
-                }
-                return sum;
-
-                }
+        int main()
+        {
+            /* love you 3000 */
+        }
         

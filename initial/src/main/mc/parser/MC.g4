@@ -57,11 +57,16 @@ list_exp:exp (CM exp)*;
 op:INTLIT|FLOATLIT|STRINGLIT|BOOLIT|ID|invo ;
 
 
+
+
 expStmt:exp SEMI;
-funcall:ID LB list_exp RB ;
+
+
+
+funcall:ID LB list_exp? RB ;
 //Statements
 
- ifStmt: IF LB exp RB stmt(ELSE stmt)? ;
+ifStmt: IF LB exp RB stmt(ELSE stmt)? ;
 
 forStmt: FOR LB exp SEMI exp SEMI exp RB stmt ;
 
@@ -79,7 +84,7 @@ retExp: RETURN exp SEMI;
 retStmt: retNon|retExp;
 
 
-stmt:ifStmt|forStmt|breakStmt|doWhileStmt|expStmt|blkStmt|retStmt|continueStmt|expStmt |declVar|SEMI   ;
+stmt:ifStmt|forStmt|breakStmt|doWhileStmt|expStmt|blkStmt|retStmt|continueStmt|expStmt |declVar  ;
 
 
 
@@ -88,7 +93,6 @@ stmt:ifStmt|forStmt|breakStmt|doWhileStmt|expStmt|blkStmt|retStmt|continueStmt|e
 //
 /*lexer*/ 
 primiType:INTTYPE|BOOLEAN|FLOATTYPE|STRINGTYPE;
-VOID:VOIDTYPE;
 INTTYPE: 'int' ;
 BOOLEAN:'boolean';
 VOIDTYPE: 'void' ;
@@ -108,6 +112,7 @@ IF:'if';
 ELSE:'else';
 RETURN:'return';
 WHILE:'while';
+VOID:VOIDTYPE;
 DO:'do';
 TRUE:'true';
 FALSE:'false';
@@ -131,7 +136,7 @@ FLOATLIT: 	NUMPART DECPART? | INTLIT DECPART;
 fragment NUMPART: INTLIT '.' | '.' INTLIT | INTLIT '.' INTLIT;
 fragment DECPART: [Ee] SUB? INTLIT;
 
-STRINGLIT:'"' Strings?'"'{self.text=self.text[1:-1]};
+STRINGLIT:'"' Strings?'"'{self.text=self.text.strip('"')};
 fragment Strings: String+;
 fragment String:~["\r\n\\]|Escape;
 fragment Escape:'\\'[bfrnt"'\\];

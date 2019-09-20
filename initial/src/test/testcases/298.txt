@@ -1,0 +1,4 @@
+int main (){
+            a= foo()[foo()[foo(0)]];
+        }
+        

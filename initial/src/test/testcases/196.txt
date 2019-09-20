@@ -1,7 +1,1 @@
- 
-            void main(){
-                return;
-            }
-            int a;
-            int b;
-            
+void main(){test();}

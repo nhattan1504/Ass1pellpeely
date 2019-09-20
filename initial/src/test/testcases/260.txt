@@ -1,5 +1,15 @@
 
-            int main(){
-           a[b[c[foo(foo(2))]]];
-           }
+        int main()
+        {
+            for(i;i;i=i+1)
+            {
+
+            }
+            {
+
+            }
+            {
+
+            }
+        }
         

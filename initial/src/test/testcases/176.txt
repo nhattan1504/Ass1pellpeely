@@ -1,6 +1,1 @@
-
-        int main(){
-            check = true;
-            total = (1+ true - false / 1234.e-10)*arr[funcall(1,2,3,4)];
-        }
-        
+ "abc\rabc" 

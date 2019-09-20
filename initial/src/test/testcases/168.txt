@@ -1,7 +1,1 @@
-
-        int floa;
-        boolean[] somethings(boolean fal){
-            true = true;
-            foo(foo(foo(foo(foo(foo(foo)))));
-        }
-        
+ "abc\\abc" 

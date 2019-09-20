@@ -1,1 +1,1 @@
-Error on line 6 col 8: }
+else,for,float,if,boolean,break,continue,int,return,void,do,while,true,false,string,<EOF>

@@ -1,8 +1,8 @@
 
-        int main (){
-            if (a)
-            {
-                print("Check If";
-            }
-            }
+        int main()
+        {
+            int num1, num2;  
+            float fraction;     
+            string character;
+        }
         

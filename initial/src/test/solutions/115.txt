@@ -1,1 +1,1 @@
-successful
+intEgeR,Float,StrIng,BoOleaN,<EOF>

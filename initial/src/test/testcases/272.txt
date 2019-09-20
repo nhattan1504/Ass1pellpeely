@@ -1,3 +1,6 @@
-
-        
-        
+void foo(float a[])
+        int goo(float x[]) {
+        float y [10];
+        foo(x); 
+        foo(y); 
+        }

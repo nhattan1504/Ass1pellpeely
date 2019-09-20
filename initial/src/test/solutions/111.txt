@@ -1,1 +1,1 @@
-successful
+boolean,if,int,float,return,string,<EOF>

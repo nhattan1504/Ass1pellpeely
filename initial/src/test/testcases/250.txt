@@ -1,3 +1,7 @@
-int main(){
-        float array[2][2];}
+
+        int main()
+        {
+        printf("Writing comments is very useful.\n");
+        printf("Good luck C programmer.\n");
+        }
         

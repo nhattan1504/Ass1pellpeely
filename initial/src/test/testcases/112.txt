@@ -1,13 +1,1 @@
-
-        void main(){
-            {
-                //something here
-            }
-            {
-                funcall(haha,de);
-            }
-            {
-                damage = "hurt my heart";
-            }
-        }
-        
+ BOOLEAN IF MAin iNt fLoat  

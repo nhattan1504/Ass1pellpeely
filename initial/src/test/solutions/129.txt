@@ -1,1 +1,1 @@
-successful
+a,=,1,+,3,*,4,<EOF>

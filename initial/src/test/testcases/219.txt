@@ -1,12 +1,6 @@
-int main(){
-            if (n>1)
-            {
-                printName();    
-            }
-            {
-                printAge();
-            }
-            {
-                printAddress();
-            }
+
+        void main()
+        {
+            break return a=b;
         }
+        

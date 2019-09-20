@@ -1,6 +1,1 @@
-
-        void main(){
-            a + d;
-            /*Long dep trai nhat qua dat
-        }
-        
+ nguyen nh@t tan 

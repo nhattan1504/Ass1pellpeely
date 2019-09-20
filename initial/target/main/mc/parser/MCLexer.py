@@ -305,7 +305,7 @@ class MCLexer(Lexer):
 
     def STRINGLIT_action(self, localctx:RuleContext , actionIndex:int):
         if actionIndex == 0:
-            self.text=self.text[1:-1]
+            self.text=self.text.strip('"')
      
 
     def UNCLOSE_STRING_action(self, localctx:RuleContext , actionIndex:int):

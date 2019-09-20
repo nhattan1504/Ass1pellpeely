@@ -1,9 +1,3 @@
-void main(){
-            int i;
-            i=10;
-            print(i);
-            system("pause");
-            return;
-            
-             
-        }
+
+        int main(float a, int b, string t[]){}
+        

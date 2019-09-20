@@ -1,7 +1,1 @@
-
-        int main(){
-            do
-            ;
-            while true;
-        }
-        
+ "abc12"abc345" 

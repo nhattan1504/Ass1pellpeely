@@ -1,4 +1,1 @@
-int main(){
-            str = "HAHAHAHADEDKA"
-            }
-        
+ 1.25678 

@@ -1,0 +1,5 @@
+void sub() {
+            a=1;
+        if () return; 
+        else return 2; 
+        }

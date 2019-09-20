@@ -1,1 +1,1 @@
-array,[,(,(,iter,),),],;,<EOF>
+abc,+,1.e-8,=,c,<EOF>

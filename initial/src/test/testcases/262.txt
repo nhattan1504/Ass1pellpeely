@@ -1,5 +1,8 @@
 
-           void main(){
-            int if;
+        int main()
+        {
+            if(check==true)
+            printf("successful");
+            return 0;
         }
         

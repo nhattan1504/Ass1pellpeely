@@ -1,5 +1,12 @@
 
-            int main(){
-        array[foo(2)]==b=a;
+        int main()
+        {
+            do {
+                int poor(){};
+            }
+            {
+                a+b;
+            }
+            while (a<5);
         }
         

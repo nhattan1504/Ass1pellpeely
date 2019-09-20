@@ -1,1 +1,1 @@
-Error on line 2 col 17: parser
+1,dsad,!=,km,!,1,<EOF>

@@ -1,3 +1,14 @@
-int main(){
-        a,b,c,d;}
+
+        int main()
+        {
+            int c;
+            c=1;  
+            do
+            {
+                printf("%d ", c);  
+                c+1;
+            }
+            while (c <= 10);
+            return 0;
+        }
         

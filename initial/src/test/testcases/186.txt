@@ -1,1 +1,1 @@
-"Hello\iMyNameIsThang"
+void main(){a + d;/*day la cmt*/}

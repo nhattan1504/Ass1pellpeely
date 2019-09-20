@@ -1,11 +1,5 @@
-int main(){
-            do{
-                int a;
-                a=10;
-                
-            }
-            {
 
-            }while("string");
-          
-        }
+        void main(){
+            return a[10];
+            }
+        

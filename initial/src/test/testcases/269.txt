@@ -1,5 +1,11 @@
 
-        int main (){
-            if (a) a; if (b) b; if (c) c; else a=10; else b=10;
+        int main()
+        {
+            if(number < 100)
+            printf("Number is less than 100!
+");
+            else if(number == 100)
+            printf("Number is 100!
+");
         }
         

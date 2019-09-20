@@ -1,9 +1,5 @@
-int main(){
-            boolean check;
-            if(!check) print(check);
-                  
-        }
-        {
 
+        int main() {
+            foo(2)[3+x] = a[b[2]] +3;
         }
         

@@ -1,1 +1,1 @@
-"@@"
+void main () {} string[] reType(){}boolean[] ahaha(){}

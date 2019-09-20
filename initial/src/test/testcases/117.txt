@@ -1,7 +1,1 @@
-
-        void main(){
-            do
-            {
-            while "HHAHA" < 10;
-        }
-        
+ 123a123 

@@ -1,11 +1,15 @@
-int main(){
-            for (i=0;i<10;i=i+1)
-            {
-                print("This is PPL");
-                if (i==5)
-                {
-                    continue
-                }
-            }
-             
+
+        void khoi_tao_queue()
+        {
+            front = rear = 0;
+            queue_size = 0;
         }
+        int is_empty()
+        {
+            return (queue_size == 0);
+        }
+        int is_full()
+        {
+	    return (queue_size == MAX);
+        }
+        

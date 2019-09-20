@@ -1,4 +1,8 @@
-int main(){
-            if(b) if (a) if (c) {} else {} else {} 
-        }
+
+        int main()
+        {
+            printf("Hello World\n");
+            return 0;
+            }
+        
         

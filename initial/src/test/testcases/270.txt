@@ -1,5 +1,7 @@
 
-        int main (){
-            foo(,2,3,4);
+        int main
+        {
+           int number;
+           number=foo(10,a[10]);
         }
         

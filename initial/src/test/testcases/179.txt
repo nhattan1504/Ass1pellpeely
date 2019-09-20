@@ -1,7 +1,1 @@
-
-        int main(){
-            string abc;
-            a + b < c = d;
-            arr[true==false>-1];
-        }
-        
+ abc "\abc" abc 

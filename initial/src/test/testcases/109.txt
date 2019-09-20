@@ -1,5 +1,1 @@
-
-        void main(){
-            a == b < c;
-        }
-        
+ t$nkdsa 
